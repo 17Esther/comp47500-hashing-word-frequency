@@ -1,4 +1,4 @@
-# COMP47500 Assignment 4 — Hash Table Word Frequency
+# COMP47500 Assignment 4 — hashing-word-frequency
 
 A Java project that implements a **custom hash table** with **separate chaining** to count word frequencies, plus a small **benchmark harness** that studies collisions, load factor, resizing, and lookup cost on synthetic text.
 
@@ -19,9 +19,6 @@ A Java project that implements a **custom hash table** with **separate chaining*
 
 
 ## Build and run
-
-
-If your shell is already inside `src/`:
 
 ```bash
 javac *.java
@@ -48,14 +45,6 @@ java -cp src Main > results/run.txt
 - **Insert policy:** new distinct keys are **prepended** to the chain (`O(1)` link; may affect which keys are “deeper” in a bucket).
 - **Dynamic resizing:** when **load factor** exceeds the **load factor threshold**, capacity **doubles** and all entries are **rehashed** into a new array. Collision statistics from earlier inserts are **not** reset on resize.
 
-### Constructor defaults
-
-```text
-new HashTable()  →  initial capacity 16, load factor threshold 0.75
-new HashTable(initialCapacity, loadFactorThreshold)  →  custom values
-```
-
-Threshold must be strictly between `0` and `1`.
 
 ### Metrics (important for the report)
 
@@ -68,20 +57,6 @@ Threshold must be strictly between `0` and `1`.
 | **Max chain length** | Longest linked list in any bucket after all operations. |
 | **Avg chain length** | Average length over **non-empty** buckets (`HashTable.getAverageChainLength()`), used in Experiment 4. |
 
-## Text processing
-
-`TextProcessor.extractWords`:
-
-- Lowercases input.
-- Strips punctuation by replacing non `[a-z0-9]` (except spaces) with spaces.
-- Splits on whitespace and drops empty tokens.
-
-Words are then passed to `HashTable.put`.
-
-## Synthetic data (`TextGenerator`)
-
-- **`generateUniqueText(n)`** — `word0 word1 … word(n-1)` (all distinct).
-- **`generateTextWithLimitedVocabulary(totalWords, vocabularySize)`** — random sequence of `word0 … word{vocabularySize-1}` with a **deterministic seed** derived from `totalWords` and `vocabularySize` so runs are reproducible.
 
 ## Experiments (summary)
 
