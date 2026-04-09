@@ -8,28 +8,23 @@ public class TextProcessor {
 
     /**
      * Extracts normalized words from raw text.
-     * Steps:
-     * 1) Lowercase
-     * 2) Remove punctuation/non-alphanumeric symbols
-     * 3) Split by whitespace
-     * 4) Ignore empty tokens
      */
     public static String[] extractWords(String text) {
         if (text == null || text.isEmpty()) {
             return new String[0];
         }
 
-        String cleaned = text.toLowerCase()
-                .replaceAll("[^a-z0-9\\s]", " ")
+        String cleaned = text.toLowerCase() // lowercase the text
+                .replaceAll("[^a-z0-9\\s]", " ") // remove punctuation/non-alphanumeric symbols
                 .trim();
 
         if (cleaned.isEmpty()) {
             return new String[0];
         }
 
-        String[] tokens = cleaned.split("\\s+");
+        String[] tokens = cleaned.split("\\s+"); // split by whitespace
         List<String> words = new ArrayList<>();
-        for (String token : tokens) {
+        for (String token : tokens) { // ignore empty tokens
             if (!token.isEmpty()) {
                 words.add(token);
             }
