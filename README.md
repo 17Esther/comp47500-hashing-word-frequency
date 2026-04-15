@@ -1,4 +1,4 @@
-# COMP47500 Assignment 4 — hashing-word-frequency
+# COMP47500 Assignment 4 — Hashing Word-frequency
 
 A Java project that implements a **custom hash table** with **separate chaining** to count word frequencies, plus a small **benchmark harness** that studies collisions, load factor, resizing, and lookup cost on synthetic text.
 
